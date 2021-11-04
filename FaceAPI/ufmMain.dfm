@@ -7,6 +7,7 @@ object fmMain: TfmMain
   ClientHeight = 552
   ClientWidth = 1170
   Color = clBtnFace
+  CustomTitleBar.CaptionAlignment = taCenter
   Constraints.MinHeight = 480
   Constraints.MinWidth = 890
   Font.Charset = DEFAULT_CHARSET
@@ -14,12 +15,11 @@ object fmMain: TfmMain
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
+  PixelsPerInch = 96
   DesignSize = (
     1170
     552)
-  PixelsPerInch = 96
   TextHeight = 13
   object lblAccessKey: TLabel
     Left = 833
@@ -126,8 +126,8 @@ object fmMain: TfmMain
     Caption = '[OPTIONAL] Top (int)'
   end
   object memLog: TMemo
-    Left = 9
-    Top = 392
+    Left = 8
+    Top = 391
     Width = 1151
     Height = 153
     Anchors = [akLeft, akTop, akRight, akBottom]
@@ -159,7 +159,7 @@ object fmMain: TfmMain
   end
   object btnClearLog: TButton
     Left = 8
-    Top = 328
+    Top = 361
     Width = 75
     Height = 25
     Caption = 'Clear log'
@@ -228,8 +228,8 @@ object fmMain: TfmMain
     Left = 8
     Top = 8
     Width = 768
-    Height = 313
-    ActivePage = TabSheet5
+    Height = 347
+    ActivePage = TabSheet2
     TabOrder = 11
     object TabSheet1: TTabSheet
       Caption = 'Person Group'
@@ -458,6 +458,13 @@ object fmMain: TfmMain
         Height = 13
         Caption = 'Enter "Face Temp ID 1" and "Face Temp IDs"'
       end
+      object Label20: TLabel
+        Left = 435
+        Top = 287
+        Width = 314
+        Height = 13
+        Caption = 'Enter "Person Group Id", "Person ID", "URL" and "Face Temp IDs"'
+      end
       object btnDetectInFile: TButton
         Left = 3
         Top = 3
@@ -619,6 +626,24 @@ object fmMain: TfmMain
         Caption = 'Find Similar - Way 2'
         TabOrder = 17
         OnClick = btnFindSimilarWayAsync2Click
+      end
+      object btnAddPersonFace: TButton
+        Left = 3
+        Top = 282
+        Width = 202
+        Height = 25
+        Caption = 'Add person face to a group '
+        TabOrder = 18
+        OnClick = btnAddPersonFaceClick
+      end
+      object btnAddPersonFaceAsync: TButton
+        Left = 211
+        Top = 282
+        Width = 202
+        Height = 25
+        Caption = 'Add person face to a group - Async'
+        TabOrder = 19
+        OnClick = btnAddPersonFaceAsyncClick
       end
     end
     object TabSheet3: TTabSheet
