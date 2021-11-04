@@ -99,6 +99,9 @@ type
     Label19: TLabel;
     edtTop: TEdit;
     lstServers: TListBox;
+    btnAddPersonFace: TButton;
+    btnAddPersonFaceAsync: TButton;
+    Label20: TLabel;
     procedure btnDetectInFileClick(Sender: TObject);
     procedure btnDetectInUrlClick(Sender: TObject);
     procedure btnDetectInStreamClick(Sender: TObject);
@@ -137,6 +140,8 @@ type
     procedure btnFindSimilarWayAsync1Click(Sender: TObject);
     procedure btnFindSimilarWayAsync2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnAddPersonFaceClick(Sender: TObject);
+    procedure btnAddPersonFaceAsyncClick(Sender: TObject);
   private
     procedure AsyncTaskCompleted(AResult: String);
     function GetSelectedServer: TFaceApiServer;
@@ -552,6 +557,24 @@ begin
     // Don't need to release LStringList, it will be done in FaceApiAsyncHelper
 	end;
 end;
+
+procedure TfmMain.btnAddPersonFaceAsyncClick(Sender: TObject);
+begin
+    FaceApiAsyncHelper.AddPersonFaceURL(
+      AccessServer(edtAccessKey.Text, GetSelectedServer),
+      edtPersonGroupID.Text, edtPersonID.Text, edtUrl.Text, '', '',
+      AsyncTaskCompleted)
+end;
+
+procedure TfmMain.btnAddPersonFaceClick(Sender: TObject);
+begin
+  memLog.Lines.Add(
+    FaceApiHelper.AddPersonFaceURL(
+      AccessServer(edtAccessKey.Text, GetSelectedServer),
+      edtPersonGroupID.Text, edtPersonID.Text, edtUrl.Text, '')
+  );
+end;
+
 {$endregion 'Face'}
 
 
